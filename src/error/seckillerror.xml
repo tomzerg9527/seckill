@@ -1,0 +1,41 @@
+<!-- Unsupported major.minor version 51.0 -->
+<!-- http://jingyan.baidu.com/article/95c9d20da3ec5fec4e756186.html
+	jdk版本问题
+	解决：改用myeclipse自带的jdk（1.6）
+ -->
+
+ <!-- at org.apache.catalina.util.LifecycleBase.start -->
+ <!-- jar包存在问题
+ 	解决：删除C:\Users\Administrator\.m2\repository下所有文件
+ 	update-maven
+  -->
+  
+ <!-- jquery.countdown引入错误
+ 	解决：引入如下url，再导入jar包：
+ 		<dependency>
+          <groupId>org.webjars.bower</groupId>
+          <artifactId>jquery.countdown</artifactId>
+          <version>2.1.0</version>
+      </dependency>
+  -->
+ <!-- <script src="//cdn.bootcss.com/jquery.countdown/2.1.0/jquery.countdown.min.js"></script> -->
+ 
+
+ <!-- var killTime = new Date(startTime+ 1000);
+ 	编译后为字符串,无法被coundown格式化，应写成
+ 	var killTime = new Date(startTime - 0 + 1000);
+  -->
+  
+  
+  <!-- mybatis调用存储过程
+  	<select id="killByProcedure" statementType="CALLABLE">
+		call execute_seckill(
+			#{seckillId,jdbcType=BIGINT,mode=IN},
+			#{phone,jdbcType=BIGINT,mode=IN},
+			#{killTime,jdbcType=TIMESTAMP,mode=IN},
+			#{result,jdbcType=INTEGER,mode=OUT}
+		)
+	</select>
+	
+	mode：参数的类型 IN/OUT 大写
+   -->
